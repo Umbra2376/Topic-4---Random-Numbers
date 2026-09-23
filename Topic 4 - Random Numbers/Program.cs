@@ -15,9 +15,18 @@ namespace Topic_4___Random_Numbers
             Random generator = new Random();
             int min, max;
             Console.WriteLine("Please give me a minimum value");
-            min = Convert.ToInt32(Console.ReadLine());
+            while (!Int32.TryParse(Console.ReadLine(), out min))
+            {
+                Console.WriteLine("This is an invalid input.");
+                Console.WriteLine("Enter a proper value.");
+            }
             Console.WriteLine("Please give me a maximum value");
-            max = Convert.ToInt32(Console.ReadLine()) + 1;
+            while (!Int32.TryParse(Console.ReadLine(), out max))
+            {
+                Console.WriteLine("This is an invalid input.");
+                Console.WriteLine("Enter a proper value.");
+            }
+            max = max + 1;
             Console.WriteLine("");
             if (min > max)
             {
@@ -58,13 +67,27 @@ namespace Topic_4___Random_Numbers
 
             //#3
             int decimalAmt;
-            double randomNumber, minDecimal, maxDecimal;
+            double randomNumber, maxAdd, minAdd;
             Console.WriteLine("Please give me a number of decimal places and I'll use the same min and max from before.");
-            decimalAmt = Convert.ToInt32(Console.ReadLine());
+            while (!Int32.TryParse(Console.ReadLine(), out decimalAmt))
+            {
+                Console.WriteLine("This is an invalid input.");
+                Console.WriteLine("Enter a proper value.");
+            }
             Console.WriteLine("If you want to make any decimal level adjustments to your earlier min value put it in here and I'll add it to the value.");
-            min = (int)Convert.ToDouble(Console.ReadLine()) + min;
+            while (!Double.TryParse(Console.ReadLine(), out minAdd))
+            {
+                Console.WriteLine("This is an invalid input.");
+                Console.WriteLine("Enter a proper value.");
+            }
+            min = (int)minAdd + min;
             Console.WriteLine("If you want to make any decimal level adjustments to your earlier max value put it in here and I'll add it to the value.");
-            max = (int)Convert.ToDouble(Console.ReadLine()) + max;
+            while (!Double.TryParse(Console.ReadLine(), out maxAdd))
+            {
+                Console.WriteLine("This is an invalid input.");
+                Console.WriteLine("Enter a proper value.");
+            }
+            max = (int)maxAdd + max;
             if (min > max)
             {
                 Console.WriteLine("Here are 3 random numbers from the values you gave before)");
